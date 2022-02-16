@@ -96,3 +96,6 @@ def main():
         rospy.set_param('/activity_status', 1)
         disable_sim_time()
    ```   
+##Reference   
+1) https://answers.ros.org/question/337065/what-is-the-correct-way-to-spawn-a-model-to-gazebo-using-a-python-script/
+2) https://answers.ros.org/question/337065/what-is-the-correct-way-to-spawn-a-model-to-gazebo-using-a-python-script/
