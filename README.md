@@ -14,7 +14,9 @@ Missing out one of this code could result in error
 ## Explanation of the code   
 This code uses four separate sdf files that has a model and config file. The location of the sdf files is in workspace/src/deepexpress_description/gazebo_sdf   
 The python code starts out with the code   
-' #!/usr/bin/env python   
+
+```python
+#!/usr/bin/env python   
 import roslaunch   
 import rospy   
 import sys   
@@ -25,11 +27,15 @@ import random
    
 from gazebo_msgs.msg import *   
 from gazebo_msgs.srv import *   
-from geometry_msgs.msg import *'   
+from geometry_msgs.msg import *
+```       
 
 These are required imports needed to spawn four random boxes to a random grid position in the gazebo world.   
 Afterward there is a definition to open a *empty_world.launch* from the *gazebo_ros* package.   
-'def launch_sim():   
+
+```python
+
+def launch_sim():   
     uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)   
     roslaunch.configure_logging(uuid)   
    
@@ -38,10 +44,13 @@ Afterward there is a definition to open a *empty_world.launch* from the *gazebo_
     roslaunch_file = [(roslaunch.rlutil.resolve_launch_arguments(cli_args)[0],roslaunch_args)]   
    
     parent = roslaunch.parent.ROSLaunchParent(uuid, roslaunch_file)   
-    parent.start()'   
-    
+    parent.start()
+```   
+       
  Now we will spawn 4 different colored and size boxes in a random position.   
- 'def spawn_box1():
+ 
+ ```python
+ def spawn_box1():
     rospy.wait_for_service("/gazebo/spawn_sdf_model")
     spawn_model_client = rospy.ServiceProxy("/gazebo/spawn_sdf_model", SpawnModel)
     spawn_model_client(model_name = 'box1', model_xml=open('/home/cmmoon98/workspace/src/deepexpress_description/gazebo_sdf/box1/model.sdf','r').read(),
@@ -70,11 +79,13 @@ Finally, we must disable the ros_simulation_time in order to avoid the ROS simul
 'def disable_sim_time():
         command = 'rosparam set use_sim_time false'
         print(command)
-        os.system(command)'   
+        os.system(command)
+```   
         
    
 Now the main code will run the definitions in order.   
-'def main():
+```python
+def main():
     try:
         global state
         launch_sim()
@@ -83,4 +94,5 @@ Now the main code will run the definitions in order.
         spawn_box3()
         spawn_box4()
         rospy.set_param('/activity_status', 1)
-        disable_sim_time()'   
+        disable_sim_time()
+   ```   
