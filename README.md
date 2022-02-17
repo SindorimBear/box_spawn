@@ -7,8 +7,8 @@ C) Reference
 Before you begin this simulation, make sure you have downloaded the **'deepexpress_description'** zip file and extracted on the same workspace with the **'pythonlaunch'** file. Also, make sure you have fully uploaded the gazebo package.    
 Missing out one of this code could result in error   
    
-1. First open up terminal and type in the code   'cd your_workspace/src/pythonlaunch/script/'   
-2. After finding the correct directory to the python file type in the code 'shortsim.py'   
+1. First open up terminal and type in the code   ```cd your_workspace/src/pythonlaunch/script/```   
+2. After finding the correct directory to the python file type in the code ```shortsim.py```   
 3. Your gazebo simulation should open up with four boxes spawned in a random position   
 
 ## Explanation of the code   
