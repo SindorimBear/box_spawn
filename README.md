@@ -73,10 +73,13 @@ def spawn_box4():
     rospy.wait_for_service("/gazebo/spawn_sdf_model")
     spawn_model_client = rospy.ServiceProxy("/gazebo/spawn_sdf_model", SpawnModel)
     spawn_model_client(model_name = 'box4', model_xml=open('/home/cmmoon98/workspace/src/deepexpress_description/gazebo_sdf/box4/model.sdf','r').read(),
-                        robot_namespace='/model',  initial_pose = Pose(position = Point(random.uniform(-8.0, 8.0),random.uniform(-8.0, 8.0),0),orientation=Quaternion(0,0,0,random.uniform(0, 3.14))), reference_frame='world')'   
+                        robot_namespace='/model',  initial_pose = Pose(position = Point(random.uniform(-8.0, 8.0),random.uniform(-8.0, 8.0),0),orientation=Quaternion(0,0,0,random.uniform(0, 3.14))), reference_frame='world')
+```   
                         
-Finally, we must disable the ros_simulation_time in order to avoid the ROS simulation time colliding with the gazebo/clock.   
-'def disable_sim_time():
+   Finally, we must disable the ros_simulation_time in order to avoid the ROS simulation time colliding with the gazebo/clock.   
+
+```python
+def disable_sim_time():
         command = 'rosparam set use_sim_time false'
         print(command)
         os.system(command)
